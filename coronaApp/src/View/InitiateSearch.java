@@ -23,15 +23,36 @@ public class InitiateSearch{
 	private static JTextField coronaSearchfield;
 	private static JButton SearchButton;
 	private static ImageIcon warn;
+	private static JButton backButton;
 
 
 	public InitiateSearch() {}
 
-	public void InitiateSearch(JFrame frame, JPanel panel) {
+	public void InitiateSearch(JFrame frame, JPanel panel,InitiateMainMenue mMenue,InitiateLogin aLogin, InitiateRegistration register, InitiateSearch iSearch) {
 		frame.setVisible(true);
+		backButton = new JButton("<");
+		backButton.setFont(new Font("Arial", Font.BOLD,20));
+		backButton.setBackground(Color.GRAY);
+		backButton.setBounds(20, 20, 30, 30);
+		backButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panel.removeAll();
+				//panel.validate();
+				frame.setVisible(false);
+				mMenue.mainMenue(frame,panel, iSearch, aLogin,mMenue,register);
+				panel.add(frame,panel);
+
+			}
+
+		} );
+
+		panel.add(backButton);
 	}
 
 	public void createSearchB(JPanel panel, int nummer, Person person){
+
+
 		int spacing = 60;
 		spacing = spacing*(nummer-1);
 		SearchButton = new JButton(person.getVorname()+" "+person.getName());

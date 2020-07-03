@@ -19,7 +19,7 @@ public class InitiateLogin {
 	private static JLabel success;
 	private static JButton registerButton;
 
-	public void login(JFrame frame, JPanel panel, InitiateMainMenue mMenue, InitiateRegistration register) {
+	public void login(JFrame frame, JPanel panel,InitiateLogin alogin, InitiateMainMenue mMenue, InitiateRegistration register,InitiateSearch iSearch) {
 
 		/*
 		Create image as Icon
@@ -59,8 +59,9 @@ public class InitiateLogin {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				panel.removeAll();
+				panel.validate();
 				frame.setVisible(false);
-				register.registerUser(panel,frame,null);
+				register.registerUser(panel,frame, alogin, mMenue, register,iSearch);
 			}
 		});
 		panel.add(registerButton);
@@ -81,7 +82,7 @@ public class InitiateLogin {
 					success.setText("Welcome " + user);
 					panel.removeAll();
 					frame.setVisible(false);
-					mMenue.mainMenue(frame, panel, null);
+					mMenue.mainMenue(frame, panel, iSearch,alogin,mMenue,register);
 				} else {
 					success.setText("Invalid Username or Password");
 				}

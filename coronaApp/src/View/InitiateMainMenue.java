@@ -1,15 +1,11 @@
 package View;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.awt.BorderLayout;
-import java.awt.Desktop;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -18,8 +14,6 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import java.awt.CardLayout;
-import java.awt.Color;
 
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
@@ -31,6 +25,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import Controler.InitiateRegistration;
 import Model.OracleDsSingleton;
 import Model.Person;
 
@@ -49,7 +44,7 @@ public class InitiateMainMenue implements ActionListener {
 
 
 
-	public void mainMenue(JFrame frame, JPanel panel, InitiateSearch iSearch) {
+	public void mainMenue(JFrame frame, JPanel panel, InitiateSearch iSearch, InitiateLogin alogin, InitiateMainMenue mMenue, InitiateRegistration register) {
 
 		ImageIcon icon = new ImageIcon("/Users/drs-0507-u/Downloads/Connection-master 2/Coronanew-master/coronaApp/src/images/coronapic.png");
 		JButton coronapic = new JButton("", icon);
@@ -65,11 +60,31 @@ public class InitiateMainMenue implements ActionListener {
 		coronaSearchfield.setBounds(110, 250, 150, 30);
 		panel.add(coronaSearchfield);
 
+		backButton = new JButton("<");
+		backButton.setFont(new Font("Arial", Font.BOLD,20));
+		backButton.setBackground(Color.GRAY);
+		backButton.setBounds(20, 20, 30, 30);
+		backButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panel.removeAll();
+				//panel.validate();
+				frame.setVisible(false);
+				alogin.login(frame ,panel,alogin,mMenue,register,iSearch);
+				panel.add(frame,panel);
+
+			}
+
+		} );
+
+		panel.add(backButton);
+
 		coronaSearchButton = new JButton("Corona Search");
 		coronaSearchButton.setBounds(80, 300, 80, 25);
 		coronaSearchButton.setSize(202,60);
 		panel.add(coronaSearchButton);
 		coronaSearchButton.addActionListener(new ActionListener() {
+
 
 
 
@@ -84,7 +99,7 @@ public class InitiateMainMenue implements ActionListener {
 			InitiateSearch iSearch = new InitiateSearch();			
 			panel.removeAll();
 			frame.setVisible(false);
-			iSearch.InitiateSearch(frame, panel);			
+			iSearch.InitiateSearch(frame, panel,mMenue,alogin,register,iSearch);
 			
 			try {
 				while(  i <= listL ){
@@ -149,4 +164,5 @@ public class InitiateMainMenue implements ActionListener {
 			}
 		}
 	}
+
 }

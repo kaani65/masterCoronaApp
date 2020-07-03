@@ -32,9 +32,10 @@ public class InitiateRegistration{
     private static JTextField landTextfield;
     private static JLabel infectLabel;
     private static JRadioButton infect;
+    private static JRadioButton notInfect;
 
 
-    public void registerUser(JPanel panel, JFrame frame, InitiateLogin alogin) {
+    public void registerUser(JPanel panel, JFrame frame, InitiateLogin alogin, InitiateMainMenue mMenue,InitiateRegistration register,InitiateSearch iSearch) {
 
         frame.setVisible(true);
 
@@ -122,9 +123,40 @@ public class InitiateRegistration{
         panel.add(infectLabel);
 
         infect = new JRadioButton("Ja");
-        infect.setBounds(80,500,20,20);
+        infect.setBounds(80,500,40,18);
         infect.setBorder(border);
+        infect.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(infect.isSelected()){
+                    System.out.println("ja");
+                } else{
+                    System.out.println("nein");
+                }
+            }
+        });
+
         panel.add(infect);
+
+        notInfect = new JRadioButton("Nein");
+        notInfect.setBounds(180,500,60,18);
+        notInfect.setBorder(border);
+        infect.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(notInfect.isSelected()){
+                    System.out.println("nein");
+                }
+                else{
+                    System.out.println("ja");
+                }
+            }
+        });
+        panel.add(notInfect);
+
+        ButtonGroup group = new ButtonGroup();
+        group.add(infect);
+        group.add(notInfect);
 
         backButton = new JButton("Zurück");
         backButton.setBackground(Color.GRAY);
@@ -133,12 +165,15 @@ public class InitiateRegistration{
             @Override
             public void actionPerformed(ActionEvent e) {
                 panel.removeAll();
+                //panel.validate();
                 frame.setVisible(false);
-                alogin.login(null,null,null,null);
+                alogin.login(frame ,panel,alogin,mMenue,register,iSearch);
+                panel.add(frame,panel);
 
             }
 
         } );
+
         panel.add(backButton);
 
         registerButton = new JButton("Registrieren");

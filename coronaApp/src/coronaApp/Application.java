@@ -64,7 +64,7 @@ public class Application {
 		panel.setBackground(Color.LIGHT_GRAY);
 		panel.setLayout(null);
 
-		alogin.login(frame, panel, mMenue,iRegister);
+		alogin.login(frame, panel, alogin,mMenue,iRegister,iSearch);
 
 
 
