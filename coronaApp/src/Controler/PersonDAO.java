@@ -118,9 +118,8 @@ public class PersonDAO {
 		}
 		return P;
 	}
-	public List <Integer> searchL(String suche){
-		List<Integer> Liste = new ArrayList<Integer>();
-		Liste.add(0);	 //Falls kein Eintrag mit dem String gefunden wurde ist der erste Platz=0
+	public List<Person> searchL(String suche){
+		List<Person> matchedPersons = new ArrayList<Person>();
 		try {
 			Connection con = ora.getConnection();
 			Statement stmt = con.createStatement();
@@ -132,15 +131,28 @@ public class PersonDAO {
 					+ "OR land LIKE INITCAP('"+ suche +"') ");
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
-				int schlussel = rs.getInt("schlussel");
-				Liste.add(schlussel);
+				Person person = new Person();
+
+				person.setId(rs.getInt("schlussel"));
+				person.setName(rs.getString("name"));
+				person.setVorname(rs.getString("vorname"));
+				person.setStrasse(rs.getString("strasse"));
+				person.setStrnummer(rs.getInt("strnummer"));
+				person.setPlz(rs.getInt("plz"));
+				person.setOrt(rs.getString("ort"));
+				person.setLand(rs.getString("land"));
+				person.setInfiziert(rs.getString("infizierte"));
+				person.setPw(rs.getString("passwort"));
+				person.setUsername(rs.getString("username"));
+
+				matchedPersons.add(person);
 			}
 
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return Liste;
+		return matchedPersons;
 	}
 
 	public boolean checkId(int id){

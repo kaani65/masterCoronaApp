@@ -10,6 +10,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+import java.util.List;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -91,25 +93,17 @@ public class InitiateMainMenue implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			String suche = coronaSearchfield.getText();
 			PersonDAO searchh = new PersonDAO();
-			Person Peter = new Person();
-			int listL = searchh.searchL(suche).size();
-			int i = 1;
 			InitiateSearch iSearch = new InitiateSearch();			
 			panel.removeAll();
 			frame.setVisible(false);
 			iSearch.InitiateSearch(frame, panel,mMenue,alogin,register,iSearch);
 			
 			try {
-				while(  i <= listL ){
-					/*
-					System.out.println(searchh.getP(searchh.searchL(suche).get(i)).getVorname());
-					System.out.println(searchh.getP(searchh.searchL(suche).get(i)).getName());
-					System.out.println(searchh.getP(searchh.searchL(suche).get(i)).getStrasse());
-					System.out.println(searchh.getP(searchh.searchL(suche).get(i)).getInfiziert());
-					*/
-										
-					iSearch.createSearchB(panel,frame,i,searchh.getP(searchh.searchL(suche).get(i)));
-					i++;
+				List<Person> matchedPersons = searchh.searchL(suche);
+				int matchedPersonsSize = matchedPersons.size();
+				
+				for (int i = 0; i < matchedPersonsSize; i++) {
+					iSearch.createSearchB(panel, frame, i + 2, matchedPersons.get(i)); // + 2 so that there is room left for the back button
 				}
 			}
 			catch(Exception f){
