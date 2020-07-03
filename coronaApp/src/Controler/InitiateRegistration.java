@@ -164,11 +164,15 @@ public class InitiateRegistration{
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                panel.removeAll();
-                //panel.validate();
-                frame.setVisible(false);
-                alogin.login(frame ,panel,alogin,mMenue,register,iSearch);
-                panel.add(frame,panel);
+                try {
+                    panel.removeAll();
+                    //panel.validate();
+                    frame.setVisible(false);
+                    alogin.login(frame, panel, alogin, mMenue, register, iSearch);
+                    panel.add(frame, panel);
+                }catch (Exception exception){
+                    System.out.println("Back to Login");
+                }
 
             }
 

@@ -37,12 +37,15 @@ public class InitiateSearch{
 		backButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				panel.removeAll();
-				//panel.validate();
-				frame.setVisible(false);
-				mMenue.mainMenue(frame,panel, iSearch, aLogin,mMenue,register);
-				panel.add(frame,panel);
-
+				try {
+					panel.removeAll();
+					//panel.validate();
+					frame.setVisible(false);
+					mMenue.mainMenue(frame, panel, iSearch, aLogin, mMenue, register);
+					panel.add(frame, panel);
+				}catch (Exception exception){
+					System.out.println("Back to Main Menue");
+				}
 			}
 
 		} );

@@ -58,10 +58,12 @@ public class InitiateLogin {
 		registerButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				panel.removeAll();
-				panel.validate();
-				frame.setVisible(false);
-				register.registerUser(panel,frame, alogin, mMenue, register,iSearch);
+
+					panel.removeAll();
+					panel.validate();
+					frame.setVisible(false);
+					register.registerUser(panel, frame, alogin, mMenue, register, iSearch);
+
 			}
 		});
 		panel.add(registerButton);
