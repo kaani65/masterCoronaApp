@@ -33,8 +33,7 @@ public class InitiateSearch{
 
 	public void InitiateSearch(JFrame frame, JPanel panel,InitiateMainMenue mMenue,InitiateLogin aLogin, InitiateRegistration register, InitiateSearch iSearch) {
 
-        panel.setPreferredSize(new Dimension(355, 667)); // Same height as frame. 
-		
+		panel.setPreferredSize(new Dimension(355, 50)); // Set init height. 
 		backButton = new JButton("<");
 		backButton.setFont(new Font("Arial", Font.BOLD,20));
 		backButton.setBackground(Color.GRAY);
@@ -112,7 +111,6 @@ public class InitiateSearch{
 
 		});
 
-
-
+		panel.setPreferredSize(new Dimension(355, nummer * 60 + 50)); // resize height depending on the number of rows in the list + 50 offset for back button
 	}
 }
