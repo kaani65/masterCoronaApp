@@ -25,7 +25,7 @@ public class InitiateLogin {
 		Create image as Icon
 		*/
 
-		ImageIcon icon = new ImageIcon("/Users/drs-0507-u/Downloads/Connection-master 2/Coronanew-master/coronaApp/src/images/coronapic.png");
+		ImageIcon icon = new ImageIcon("src/images/coronapic.png");
 		JButton coronapic = new JButton("", icon);
 
 		coronapic.setContentAreaFilled(false);

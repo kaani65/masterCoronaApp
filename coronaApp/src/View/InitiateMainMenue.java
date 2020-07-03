@@ -46,7 +46,7 @@ public class InitiateMainMenue implements ActionListener {
 
 	public void mainMenue(JFrame frame, JPanel panel, InitiateSearch iSearch, InitiateLogin alogin, InitiateMainMenue mMenue, InitiateRegistration register) {
 
-		ImageIcon icon = new ImageIcon("/Users/drs-0507-u/Downloads/Connection-master 2/Coronanew-master/coronaApp/src/images/coronapic.png");
+		ImageIcon icon = new ImageIcon("src/images/coronapic.png");
 		JButton coronapic = new JButton("", icon);
 
 

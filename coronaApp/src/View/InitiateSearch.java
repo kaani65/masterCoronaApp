@@ -79,7 +79,7 @@ public class InitiateSearch{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (person.getInfiziert().equals("ja")) {
-					ImageIcon warn = new ImageIcon("/Users/drs-0507-u/Downloads/Connection-master 2/Coronanew-master/coronaApp/src/images/warning.png");
+					ImageIcon warn = new ImageIcon("src/images/warning.png");
 					JButton warning = new JButton("", warn);
 					warning.setBounds(10, 10, 10, 10);
 
