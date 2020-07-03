@@ -1,9 +1,7 @@
 
 package coronaApp;
 import javax.swing.*;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Image;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -32,7 +30,7 @@ public class Application {
 
 	public static void main(String[] args) {
 		
-		JScrollPane scrollPane = new JScrollPane();
+		//JScrollPane scrollBar = new JScrollPane();
 		JPanel panel = new JPanel();
 		JFrame frame = new JFrame();
 		InitiateMainMenue mMenue =  new InitiateMainMenue();
@@ -44,9 +42,8 @@ public class Application {
         InitiateSearch iSearch = new InitiateSearch();
 		InitiateRegistration iRegister = new InitiateRegistration();
 
+		JScrollPane scrollPane = new JScrollPane(panel);
 
-
-		scrollPane.setBounds(5,5,00,200);
 
 		frame.add(scrollPane);
 		frame.setSize(375, 667);
@@ -56,9 +53,11 @@ public class Application {
 
 
 
-		scrollPane.setBackground(Color.WHITE);
+
+
+		/*scrollPane.setBackground(Color.WHITE);
 		scrollPane.setLayout(null);
-		scrollPane.setVisible(false);
+		scrollPane.setVisible(false);*/
 
 		
 		panel.setBackground(Color.LIGHT_GRAY);

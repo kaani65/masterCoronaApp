@@ -7,6 +7,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.awt.Desktop;
 
+
 import  Controler.*;
 import  coronaApp.*;
 import Model.*;
@@ -24,9 +25,11 @@ public class InitiateSearch{
 	private static JButton SearchButton;
 	private static ImageIcon warn;
 	private static JButton backButton;
+	//private static JScrollPane scrollBar;
+	//private static JPanel scrollContaine;
 
 
-	public InitiateSearch() {}
+	//public InitiateSearch() {}
 
 	public void InitiateSearch(JFrame frame, JPanel panel,InitiateMainMenue mMenue,InitiateLogin aLogin, InitiateRegistration register, InitiateSearch iSearch) {
 		frame.setVisible(true);
@@ -51,20 +54,26 @@ public class InitiateSearch{
 		} );
 
 		panel.add(backButton);
+
+
+
+
 	}
 
-	public void createSearchB(JPanel panel, int nummer, Person person){
-
+	public void createSearchB(JPanel panel,JFrame frame, int nummer, Person person) {
 
 		int spacing = 60;
-		spacing = spacing*(nummer-1);
-		SearchButton = new JButton(person.getVorname()+" "+person.getName());
-		SearchButton.setBounds(5, 20+spacing, 80, 25);
-		SearchButton.setSize(350,60);
+		spacing = spacing * (nummer - 1);
+		SearchButton = new JButton(person.getVorname() + " " + person.getName());
+		SearchButton.setBounds(5, 20 + spacing, 80, 25);
+		SearchButton.setSize(350, 60);
 		boolean infi = (person.getInfiziert().equals("ja"));
 		System.out.println(infi);
-		if(infi){SearchButton.setBackground(Color.RED);}
-		else {SearchButton.setBackground(Color.GREEN);}
+		if (infi) {
+			SearchButton.setBackground(Color.RED);
+		} else {
+			SearchButton.setBackground(Color.GREEN);
+		}
 		panel.add(SearchButton);
 		SearchButton.addActionListener(new ActionListener() {
 			@Override
@@ -89,7 +98,7 @@ public class InitiateSearch{
 						System.out.println("No Selected");
 					}
 					System.out.println("Test");
-				}else if(person.getInfiziert().equals("nein")) {
+				} else if (person.getInfiziert().equals("nein")) {
 					System.out.println("Keine Gefahr");
 				}
 			}
@@ -97,6 +106,6 @@ public class InitiateSearch{
 		});
 
 
-	}
 
+	}
 }

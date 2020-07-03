@@ -108,7 +108,7 @@ public class InitiateMainMenue implements ActionListener {
 					System.out.println(searchh.getP(searchh.searchL(suche).get(i)).getInfiziert());
 					*/
 										
-					iSearch.createSearchB(panel,i,searchh.getP(searchh.searchL(suche).get(i)));
+					iSearch.createSearchB(panel,frame,i,searchh.getP(searchh.searchL(suche).get(i)));
 					i++;
 				}
 			}

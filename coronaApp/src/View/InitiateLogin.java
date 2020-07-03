@@ -93,7 +93,7 @@ public class InitiateLogin {
 		panel.add(button);
 
 		success = new JLabel("");
-		success.setBounds(10, 580, 300, 25);
+		success.setBounds(10, 525, 300, 25);
 		panel.add(success);
 
 		frame.setVisible(true);
