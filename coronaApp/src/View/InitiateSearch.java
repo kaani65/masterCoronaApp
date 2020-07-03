@@ -25,14 +25,16 @@ public class InitiateSearch{
 	private static JButton SearchButton;
 	private static ImageIcon warn;
 	private static JButton backButton;
-	//private static JScrollPane scrollBar;
+	private JScrollPane scrollPane;
 	//private static JPanel scrollContaine;
 
 
 	//public InitiateSearch() {}
 
 	public void InitiateSearch(JFrame frame, JPanel panel,InitiateMainMenue mMenue,InitiateLogin aLogin, InitiateRegistration register, InitiateSearch iSearch) {
-		frame.setVisible(true);
+
+        panel.setPreferredSize(new Dimension(355, 667)); // Same height as frame. 
+		
 		backButton = new JButton("<");
 		backButton.setFont(new Font("Arial", Font.BOLD,20));
 		backButton.setBackground(Color.GRAY);
@@ -44,6 +46,8 @@ public class InitiateSearch{
 					panel.removeAll();
 					//panel.validate();
 					frame.setVisible(false);
+					frame.remove(scrollPane); // remove scrollpane from frame
+					frame.add(panel); // readd normal panel to frame
 					mMenue.mainMenue(frame, panel, iSearch, aLogin, mMenue, register);
 					panel.add(frame, panel);
 				}catch (Exception exception){
@@ -52,8 +56,11 @@ public class InitiateSearch{
 			}
 
 		} );
-
 		panel.add(backButton);
+		
+		scrollPane = new JScrollPane(panel); // create scrollpane with panel inside
+		frame.add(scrollPane); // add scrollpane to frame
+		frame.setVisible(true);
 
 
 
